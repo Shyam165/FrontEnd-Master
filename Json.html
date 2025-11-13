@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json</title>
+</head>
+<body>
+    <script>
+        let serverResponse = `{
+            "name":"Shyam",
+            "age":"56",
+             "location":{
+             "city":"Jaipur",
+             "state":"Rajasthan"
+             },
+              "isCommited":"No,Single"}`
+              responseObject=JSON.parse(serverResponse),
+
+         //Json that we got from the server end     
+         console.log(serverResponse);
+
+        console.log(responseObject.location.city),
+        console.log(responseObject.name);
+        console.log("\"");
+        let myJson = JSON.stringify(responseObject);
+        // responseObject = JSON.parse(responseObject);   // here it will give error because it i
+        // s already a normal JS object and you cant parse a normal object you need a JSON to parse
+        responseObject=JSON.stringify(JSON.stringify(JSON.stringify(JSON.parse(serverResponse))))
+
+        //Json that we have parsed from the server end.
+        console.log(responseObject);
+    </script>
+</body>
+</html>
