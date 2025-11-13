@@ -106,7 +106,7 @@
 // console.log(list.length);
 // console.log(list.join(" | "));
 // console.log(list[0]);
-// console.log(list.slice(3,5));    //push(), pop(), shift(), unshift()
+// console.log(list.slice(3,5));    //push(), pop(), shift()  --> rmeove, unshift()
 
 
 //------------------------------------------------------
