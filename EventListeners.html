@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Events</title>
+</head>
+<body>
+  <div id="box1" style="width:150px; height:150px; background-color:skyblue; text-align:center; line-height:150px;">
+    Hover Me
+  </div>
+<div id="box2" style="width:150px; height:150px; background-color:rgb(235, 135, 215); text-align:center; line-height:150px;">
+    click me!!
+  </div>
+  <br><br>
+  <div id = "box3">
+   <input class="input-copy-to", placeholder="type into me!"/>
+   <p class="p-copy-to">Nothing was happened yet</p>
+  </div>
+  <div id="box4" style="width:150px; height:150px; background-color:rgb(235, 135, 215); text-align:center; line-height:150px;">
+    
+  </div>
+  <br><br>
+  <div class="button-container">
+   <Button>1</Button>
+   <Button>2</Button>
+   <Button>3</Button>
+   <Button>4</Button>
+   <Button>5</Button>
+  </div>
+  <script>
+    const box = document.getElementById("box1");
+
+    // Mouseover event
+    box.addEventListener("mouseover", function() {
+      box.style.backgroundColor = "lightgreen";
+      box.textContent = "Mouse Over!";
+    });
+
+    // Mouseout event
+    box.addEventListener("mouseout", function() {
+      box.style.backgroundColor = "skyblue";
+      box.textContent = "Hover Me";
+    });
+     
+    
+    //Click event
+    const box2 = document.getElementById("box2");
+    box2.addEventListener("click", function() {
+      box2.style.backgroundColor = "red";
+      box2.textContent = "clicked";
+    });
+
+    //Keyup/keydown event
+    // const inputText = document.querySelector(".input-copy-to");
+    // const paragraphText = document.querySelector(".p-copy-to");
+    // inputText.addEventListener("keydown", function(){
+    //     paragraphText.textContent = inputText.value;
+    // });
+
+    //change event
+    const inputText = document.querySelector(".input-copy-to");
+    const paragraphText = document.getElementById("box4");
+    inputText.addEventListener("change", function(){
+        paragraphText.style.backgroundColor = inputText.value;
+    });
+
+    document.querySelector(".button-container").addEventListener("click", function(){
+        alert(`You clicked on button ${event.target.innerText}`)
+    }
+
+);
+  </script>
+</body>
+</html>
