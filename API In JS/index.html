@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API In JS</title>
+</head>
+<body>
+    <button id="dog-btn">Gimme Doggo</button>
+<div id="dog-target"></div>
+    <script>
+//A Promise is an object that represents a future value from an asynchronous operation. 
+// It is used when waiting for data from an external source like an API, handling network delays
+// and potential slow internet connections.
+
+const DOG_URL = "https://dog.ceo/api/breeds/image/random";
+
+const doggos = document.getElementById("dog-target");
+
+function addNewDoggo() {
+//The fetch() function is built into browsers and allows requesting information from a server. 
+//It returns a Promise that represents the eventual result of an asynchronous network request.
+
+//response.text() returns the response as a raw text string that requires manual parsing with JSON.parse(),
+// while response.json() automatically parses the response into a JavaScript object, saving a parsing step.
+  const promise = fetch(DOG_URL);  
+  promise
+    .then(function (response) {
+    const processingPromise = response.text();
+    return processingPromise;
+  })
+    .then(function (processedResponse) {
+    const dogObject = JSON.parse(processedResponse);
+    const img = document.createElement("img");
+    img.src = dogObject.message;
+    img.alt = "Cute doggo";
+    doggos.appendChild(img);
+  });
+}
+
+
+// Another Method 
+function addNewDoggo() {
+  const promise = fetch(DOG_URL);
+  promise
+    .then(function (response) {
+    const processingPromise = response.json(); // json instead of text
+    return processingPromise;
+  })
+    .then(function (processedResponse) {
+    // we get to skip this line since it'll already be an object
+    // const dogObject = JSON.parse(processedResponse);
+
+    const img = document.createElement("img");
+    img.src = processedResponse.message;
+    img.alt = "Cute doggo";
+    doggos.appendChild(img);
+  });
+}
+
+document.getElementById("dog-btn").addEventListener("click", addNewDoggo);
+
+
+//Aync Function :- It pauses execution of the function and waits for a Promise to resolve, 
+//then resumes execution with the resolved value once the Promise is complete.
+
+async function addNewDoggo() {
+  const promise = await fetch(DOG_URL);
+  const processedResponse = await promise.json();
+  const img = document.createElement("img");
+  img.src = processedResponse.message;
+  img.alt = "Cute doggo";
+  doggos.appendChild(img);
+}
+
+    </script>
+</body>
+</html>
